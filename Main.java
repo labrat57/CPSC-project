@@ -30,18 +30,18 @@ public class Main extends Application {
 		launch(args);
 		
 		Scanner input = new Scanner(System.in);
-        int[] Xval = new int[8];
-        int[] Yval = new int [8];
+        int[] Xval = new int[4];
+        int[] Yval = new int [4];
         int[] maxLength = new int[1];
 
 
         //getting x and y from user
-        System.out.println("Please enter 6 x values:");
-        for (int i = 0; i < 8; i++) {
+        System.out.println("Please enter 4 x values:");
+        for (int i = 0; i < 4; i++) {
             Xval[i] = input.nextInt();
         }
-        System.out.println("Please enter 6 Y values:");
-        for (int n = 0; n < 8; n++) {
+        System.out.println("Please enter 4 Y values:");
+        for (int n = 0; n < 4; n++) {
             Yval[n] = input.nextInt();
         }
 		// max length 
