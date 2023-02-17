@@ -1,0 +1,134 @@
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class testEfficiency {
+public static void main(String[] args) {
+
+    String[] listOfAllPaths = {"AB", "AC", "AD", "BC", "BD", "CD"};
+    // from Natalie
+    String[] listOfPaths = {"AB", "BC", "CD"};
+    // from Romeo
+    double[] lengthOfPaths = {2.0, 4.0, 6.0};
+    // from Natalie then Romeo
+    int numberOfPoints = 4;
+    String[] listOfPoints = {"A", "B", "C", "D"};
+
+    double efficiency = 0.0;
+    // final value which will be used to calculate which set of paths is best
+    // lowest efficiency value is best
+
+    int amountOfAllPaths = listOfAllPaths.length;
+    int amountOfPaths = listOfPaths.length;
+    // creating variables for the sake of loops
+
+    for (int i = 0; i < amountOfAllPaths; i++) {
+
+        // this will test how long it takes to get from every point to every other point
+
+        char startPoint = listOfAllPaths[i].charAt(0);
+        char endPoint = listOfAllPaths[i].charAt(1);
+        char currentPoint = startPoint;
+        // naming the start and end points
+
+        while (currentPoint != endPoint) {
+
+            int position = Arrays.asList(listOfPoints).indexOf(currentPoint);
+            // variable position represents where in the array list of points currentPoint is
+            if (listOfPaths[position].contains(String.valueOf(endPoint))) {
+//covers the case of 6 paths
+                efficiency += lengthOfPaths[position];
+                currentPoint = endPoint;
+                
+                // if there is a direct path from the 2 currentPoint to endPoint we know that's the shortest path
+            } else if (amountOfPaths == 3) {
+
+                double effeciency = efficiency + lengthOfPaths[position];
+
+                if (listOfPaths[i].charAt(0) == currentPoint) {
+                    currentPoint = listOfPaths[i].charAt(1);
+                    // changes current point to the neighbor of old currentPoint
+                } else {
+                    currentPoint = listOfPaths[i].charAt(0);
+                    //that if else is basically saying whichever position old currentPoint is, the new one is its neighbor
+                }
+
+            } else if (amountOfPaths == 4 || amountOfPaths == 5) {
+         //harder cases because there can be 2 ways to get from pt to pt
+
+                if (Collections.frequency(Arrays.asList(listOfPaths), String.valueOf(currentPoint)) == 1) {
+        //if only one path connects to current point we follow that path
+
+                    efficiency = efficiency + lengthOfPaths[position];
+
+                    if (listOfPaths[i].charAt(0) == currentPoint) {
+                        currentPoint = listOfPaths[i].charAt(1);
+                    } else {
+                        currentPoint = listOfPaths[i].charAt(0);
+                    }
+                } else if (Collections.frequency(Arrays.asList(listOfPaths), String.valueOf(currentPoint)) == 2) {
+
+                    double testOne = 0;
+                    double testTwo = 0;
+    //these two variables will be compared to find the shortest set of paths between pts
+                    for (int p = 0; p < amountOfPaths; p++) {
+
+                        if (listOfPaths[p].charAt(0) == currentPoint || listOfPaths[p].charAt(1) == currentPoint) {
+                            //if the currentPoint is in position p of the array
+
+                            if (testOne == 0) {
+                                //if this is the first time currentPoint shows up in the array
+
+        				testOne = testOne + lengthOfPaths[p];
+        				position = Arrays.asList(listOfPaths).indexOf(currentPoint);
+        				
+        				if (listOfPaths[i].charAt(0) == currentPoint){
+                        	currentPoint = listOfPaths[position].charAt(1);
+                        	//changes current point to the neigbor of old currentPoint	
+                        		
+                        	}
+                        else {
+                        	currentPoint = listOfPaths[position].charAt(1);  			 
+                        }
+	
+        	        	 if (listOfPaths[position].contains(endPoint)){
+        			 	testOne = testOne + lengthOfPaths[currentPoint];
+        			 }
+   
+        		}else {
+        	//if this is the second time currentPoint shows up in the array
+        				 double testwo = lengthOfPaths[p];
+         			 	position = Arrays.asList(listOfPaths).indexOf(currentPoint);
+ //the position of currentPOint
+         	        	 if (listOfPaths[position].contains(endPoint)){
+         			 	testTwo = testTwo + lengthOfPaths[currentPoint];
+         			 	
+         			 	position = listOfPaths.indexOf(currentPoint);
+        				
+        				if (listOfPaths[i].charAt(0) == currentPoint){
+                        	currentPoint = listOfPaths[position].charAt(1);
+                        	//changes current point to the neigbor of old currentPoint	
+                        
+         	        	 }else {
+                        	currentPoint = listOfPaths[position].charAt(1);
+
+                        }
+	
+
+        			 }
+         	        	 }
+         	        		 
+         	        	 if (testOne < testTwo) {
+         	        	 efficiency = efficiency + testOne;
+
+         	        	 }else {
+        	        		 
+        	        		 efficiency = efficiency + testTwo;
+ //adds the length of whichever way is shorter to effeciency
+        	        		 
+        	        	 }
+        		 }
+         }
+         }
+         }
+        	 }        	 
