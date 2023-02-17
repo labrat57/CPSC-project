@@ -1,12 +1,18 @@
 efficient Point Mapping system
 
-The goal of this project is to be able to calculate the most effecient path between up to 5 points while keeping the combined paths under a lenth restriction. 
+The goal of this project is to be able to calculate the most efficient path between up to 5 points while keeping the combined paths under a length restriction. 
 A project like this could be used to design a more efficient transit system for a city or walking paths in a community.
 
-To use our algorithm, begin by inptuting the 8 X coordinates followed by the 8 Y coordinates into the program. 
+To use our algorithm, begin by inputting the 4 X coordinates followed by the 4 Y coordinates into the program. 
 The program will then prompt you for your maximum path length.
 
-the program then goes calculates the distances between all the input values. These are then turned into vectors. 
-once we have obtained the vectors the program calculates all possible combinations of more than 3 vecotrs. these points are then sorted to make sure they are under the maximum lentgh.
-Once the combinations are sorted they are then put through a final algorithm that finds the most efficient combination of vectors. 
+The program then calculates the distances between all the input values. These are then turned into vectors.  And are returned to us as vector lengths for the 6 possible vectors.
+
+The user must then go run the roughDraft.java file. This file will find every possible combination of vectors. It will also eliminate the options that are less than 3 vectors as they aren’t valid for our use.
+
+The user can then match the vector lengths given in the Main.java file to their appropriate given in the output. If the addition of the lengths in the order of the vectors exceed the maximum length the user specified at the start of the program, they can disregard that vector combination. 
+Once the user is satisfied with their vector combinations they can run them into the Module file to find the most efficient path
+
+
+
 
