@@ -70,7 +70,7 @@ public class roughDraft {
 	        	for (int n = 0; n<list.size(); n++) 
 					addition += list.get(n);
 	        	
-	           System.out.println("Found a list with size bigger than"+ desiredSize +": " + list + " length of:" + addition );
+	           System.out.println("Here's a combination of more than 3 vectors: " + list + " length of:" + addition );
 	        }
 	    
 	    }
