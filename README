@@ -1,4 +1,4 @@
-efficient Point Mapping system
+Efficient Point Mapping System
 
 The goal of this project is to be able to calculate the most efficient path between up to 5 points while keeping the combined paths under a length restriction. 
 A project like this could be used to design a more efficient transit system for a city or walking paths in a community.
