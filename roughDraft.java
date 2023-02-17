@@ -8,12 +8,7 @@ import java.util.List;
 public class roughDraft {
 
 	public static void main(String[] args) {
-		//int AB = 1;
-		//int AC = 2;
-		//int AD = 3;
-		//int BC = 4;
-		//int BD = 5;
-		//int CD = 6;
+		
 		String [] given = {"AB", "AC", "AD", "BC", "BD", "CD"};
 		System.out.println("list of all the numbers: " + Arrays.toString(given));
 		
