@@ -6,4 +6,7 @@ A project like this could be used to design a more efficient transit system for 
 To use our algorithm, begin by inptuting the 8 X coordinates followed by the 8 Y coordinates into the program. 
 The program will then prompt you for your maximum path length.
 
-T
+the program then goes calculates the distances between all the input values. These are then turned into vectors. 
+once we have obtained the vectors the program calculates all possible combinations of more than 3 vecotrs. these points are then sorted to make sure they are under the maximum lentgh.
+Once the combinations are sorted they are then put through a final algorithm that finds the most efficient combination of vectors. 
+
