@@ -2,7 +2,7 @@ package application;
 	
 
 import java.util.Scanner;
-
+import java.util.Arrays;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -30,18 +30,26 @@ public class Main extends Application {
 		launch(args);
 		
 		Scanner input = new Scanner(System.in);
-        int[] Xval = new int[6];
-        int[] Yval = new int [6];
-        
+        int[] Xval = new int[8];
+        int[] Yval = new int [8];
+        int[] maxLength = new int[1];
+
+
         //getting x and y from user
         System.out.println("Please enter 6 x values:");
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 8; i++) {
             Xval[i] = input.nextInt();
         }
         System.out.println("Please enter 6 Y values:");
-        for (int n = 0; n < 6; n++) {
+        for (int n = 0; n < 8; n++) {
             Yval[n] = input.nextInt();
         }
+		// max length 
+		System.out.print("Please enter your maximum length:");
+        for (int b = 0; b <2; b++) {
+        	maxLength[b] = input.nextInt();
+        }
+
         input.close();
 		Point[] newArr = new Point[6];
 		
