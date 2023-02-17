@@ -17,9 +17,7 @@ public class roughDraft {
 		String [] given = {"AB", "AC", "AD", "BC", "BD", "CD"};
 		System.out.println("list of all the numbers: " + Arrays.toString(given));
 		
-		
 
-	   
 		int maxLength = 6;
 		// loop that adds all the vectors in the given array
 				String sum = "";
@@ -27,22 +25,7 @@ public class roughDraft {
 					sum = sum + given[i];
 				}
 				System.out.println("sum of all numbers in the array: " + sum);
-				
-		// put this if statement after all vector additions
-		//if (sum <= max length) {
-			// put print statement for all lines here
-		//}
-				
 		
-
-		
-		// loops that adds only 3 of the vectors together (cause 4 points so 3 vectors)
-		// loop of ABACAD
-		String ABACAD = "";
-		for (int i = 0; i<3; i++) {
-			ABACAD = ABACAD + given[i];
-		}
-		System.out.println("sum of ABACAD = " + ABACAD);
 	
 		args = given;
 		
@@ -89,13 +72,15 @@ public class roughDraft {
 	    for (List<T> list : combination) {
 	        if (list.size() >=3) {
 	        	String addition = "";
-	        	for (int i = 0; i<3; i++) 
-					addition = addition + list;
+	        	for (int n = 0; n<list.size(); n++) 
+					addition += list.get(n);
+	        	
 	           System.out.println("Found a list with size bigger than"+ desiredSize +": " + list + " length of:" + addition );
 	        }
+	    
 	    }
 
-	    //System.out.println(powerSet);
+	   
 	   return combination;
 	    
 	}}
