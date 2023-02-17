@@ -33,7 +33,7 @@ public class Main extends Application {
         int[] Xval = new int[6];
         int[] Yval = new int [6];
         
-        
+        //getting x and y from user
         System.out.println("Please enter 6 x values:");
         for (int i = 0; i < 6; i++) {
             Xval[i] = input.nextInt();
@@ -57,7 +57,7 @@ public class Main extends Application {
 		
 		int amountOfPoints =6;
 		int magnitutde=6;
-		
+		// fingding all vectors and calulating magnitutde
 		for(int i=0; i < amountOfPoints-1; i++){
 			for(int j=i+1; j < amountOfPoints; j++){
 				System.out.println(newArr[i].x + "," + newArr[i].y);
