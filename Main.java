@@ -30,18 +30,18 @@ public class Main extends Application {
 		launch(args);
 		
 		Scanner input = new Scanner(System.in);
-        int[] Xval = new int[8];
-        int[] Yval = new int [8];
+        int[] Xval = new int[4];
+        int[] Yval = new int [4];
         int[] maxLength = new int[1];
 
 
         //getting x and y from user
-        System.out.println("Please enter 6 x values:");
-        for (int i = 0; i < 8; i++) {
+        System.out.println("Please enter 4 x values:");
+        for (int i = 0; i < 4; i++) {
             Xval[i] = input.nextInt();
         }
-        System.out.println("Please enter 6 Y values:");
-        for (int n = 0; n < 8; n++) {
+        System.out.println("Please enter 4 Y values:");
+        for (int n = 0; n < 4; n++) {
             Yval[n] = input.nextInt();
         }
 		// max length 
@@ -51,11 +51,11 @@ public class Main extends Application {
         }
 
         input.close();
-		Point[] newArr = new Point[6];
+		Point[] newArr = new Point[4];
 		
 		char names = 'A';
 		//function where you are given x,y
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 4; i++) {
           newArr [i] = new Point();
           newArr[i].x=Xval[i];
           newArr[i].y=Yval[i];		  
@@ -63,8 +63,8 @@ public class Main extends Application {
           names++;
 		}
 		
-		int amountOfPoints =6;
-		int magnitutde=6;
+		int amountOfPoints =4;
+		int magnitutde=4;
 		// fingding all vectors and calulating magnitutde
 		for(int i=0; i < amountOfPoints-1; i++){
 			for(int j=i+1; j < amountOfPoints; j++){
