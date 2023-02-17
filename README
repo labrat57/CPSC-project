@@ -11,7 +11,7 @@ The program then calculates the distances between all the input values. These ar
 The user must then go run the roughDraft.java file. This file will find every possible combination of vectors. It will also eliminate the options that are less than 3 vectors as they aren’t valid for our use.
 
 The user can then match the vector lengths given in the Main.java file to their appropriate given in the output. If the addition of the lengths in the order of the vectors exceed the maximum length the user specified at the start of the program, they can disregard that vector combination. 
-Once the user is satisfied with their vector combinations they can run them into the Module file to find the most efficient path
+Once the user is satisfied with their vector combinations they can run them into the Test efficieny file to find the most efficient path
 
 
 
