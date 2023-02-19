@@ -1,0 +1,57 @@
+package carlosGroupProjectPortion;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class pathConnective {
+
+    public static void main(String[] args) {
+    	double AB = 2;
+    	double AC = 3;
+    	double AD = 3; 
+    	double BC = 6;
+    	double BD = 8;
+    	double CD = 4;
+    	
+    	
+    	String [][] setOfLists = {{"AB","AC","AD"}, {"AC","CD","DB"}, {"AB","BC","CA"}};
+    	//Romeo I need something like this from you
+    	double [][] setOfLengths = {{AB,AC,AD}, {AC,CD,BD}, {AB,BC,AC}};
+    	//Romeo I need something like this from you
+    	int numOfLists = setOfLists.length;
+    	
+    	String[] listOfPoints = {"A", "B", "C", "D"};
+        int numOfPoints = listOfPoints.length;
+        
+        
+    	
+    	for (int q = 0; q < numOfLists; q++) {
+    		
+    		String[] listOfPaths = setOfLists[q];
+	        int numOfPaths = listOfPaths.length;
+	        
+	        double[] listOfLengths = setOfLengths[q];
+	
+	        for (int i = 0; i < numOfPoints; i++) {
+	        	boolean pathConnected = false;
+	            for (int t = 0; t < numOfPaths; t++) {
+	                if (listOfPaths[t].charAt(0) == listOfPoints[i].charAt(0) || listOfPaths[t].charAt(1) == listOfPoints[i].charAt(0)) {
+	                    pathConnected = true;
+	                    break;
+	                }
+	            }
+	            if (!pathConnected) {
+	                System.out.println("Path not connected");
+	                
+	            }
+	            
+	            //else run effeciencyTest
+	        }
+	
+	       
+	        
+	        
+	        
+    	}
+    }
+}
