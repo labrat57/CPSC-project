@@ -14,5 +14,7 @@ The user can then match the vector lengths given in the Main.java file to their 
 Once the user is satisfied with their vector combinations they can run them into the Test efficieny file to find the most efficient path
 
 
+source for some of the code
+https://stackoverflow.com/questions/5162254/all-possible-combinations-of-an-array
 
 
