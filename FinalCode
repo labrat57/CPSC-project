@@ -78,7 +78,7 @@ public class FinalCode {
         String [] originalSetString = {"AB","AC","AD","BC","BD","CD"};
         
        ////////////////////////////////////////////////////////////////////////////////////////////////////
-      //Romeos code should be own class but we dont know how///////////////////////////////////////////////////////        
+      //Romeos code should be own class but we cant get it to work///////////////////////////////////////////////////////        
       //CITATION: the following 11 lines of code are modified from stack overflow author: Andrew Mao
       //LINK: https://stackoverflow.com/questions/1670862/obtaining-a-powerset-of-a-set-in-java        
        
@@ -201,7 +201,7 @@ public class FinalCode {
             int numOfPaths = paths.length;
             double[] lengths = setOfLengths[q];
             double efficiency = Double.MAX_VALUE;
-            
+            //tests every set in 2d array
             
             //here we test for path connectivness. if theres 4 points and three or more 
             //paths we know they are path connected if and only if each point shows up at least once
@@ -221,6 +221,8 @@ public class FinalCode {
             }
             if (allPathsConnected) {
 
+//eficiency test start///////////////////////////////////////////////////
+
             	efficiency = 0;
             	for (int i1 = 0; i1 < maxPaths.length; i1++) {
             		
@@ -235,7 +237,7 @@ public class FinalCode {
             				
             			}	
             			break;
-            			//basically I figured out that this is always true and this saves a lot of time
+            			//basically I figured out that if theres n points and n-1 paths every path times n-1 is the efficiency
             		}
             		
             		for (int t = 0; t < paths.length; t++) {
@@ -244,7 +246,7 @@ public class FinalCode {
             			
             			
             			if (paths[t].equals(direct)) {
-            				//if direct path from start pt to end pt
+            				//if direct path from start pt to end pt it will always be shortest
             				efficiency += lengths[t];
             				done = true;
             				break;
@@ -318,20 +320,26 @@ public class FinalCode {
         	    		}
             		
         	    		
-        	    		
+        	    		int end = 0;
         	    		while(!done) {
-        		    			
-        		    		
+        		    		end += 1;
+        		    		if (end>100) {
+        		    			efficiency = Double.MAX_VALUE;
+        		    			done = true;
+        		    		//we were getting 1 infinite loop per set whe inputting weird coordinates
+        		    		}
+
         		    		String midEnd = "" + currentPoint + endPoint;
         		    		String endMid = "" + endPoint + currentPoint;
         	    			
         	    			for (int t = 0; t < paths.length; t++) {
         		    			
-        		    			if ((paths[t].equals(midEnd))||(paths[t].equals(endMid))) {// why error
+        		    			if ((paths[t].equals(midEnd))||(paths[t].equals(endMid))) {
         		    				//if our new point has a direct path to end
         		    				efficiency += lengths[t];
         		    				done = true;
         		    				break;	
+							//always true if start pt is in once and theres more than 3 paths and no direct path
         		    			}
         	    			}
         	    			
@@ -339,7 +347,7 @@ public class FinalCode {
             		}
             		
             		if (count == 2 && !done){
-            			
+            			//tests if there 2 paths to end
             			
         				char tstPtOne = startPoint;
         				char tstPtTwo = startPoint;
@@ -441,7 +449,7 @@ public class FinalCode {
             	System.out.println(Arrays.toString(paths));
             	
             	if (efficiency<bestEfficiency) {
-                	
+                	//updates best efficiency
                 	
                 	bestEfficiency = efficiency;
                 	bestPaths = paths;
