@@ -1,18 +1,23 @@
 Efficient Point Mapping System
 
-The goal of this project is to be able to calculate the most efficient path between up to 5 points while keeping the combined paths under a length restriction. 
+The goal of this project is to be able to calculate the most efficient path between 4 points while keeping the combined paths under a length restriction. 
 A project like this could be used to design a more efficient transit system for a city or walking paths in a community.
 
-To use our algorithm, begin by inputting the 4 X coordinates followed by the 4 Y coordinates into the program. 
+To use our algorithm, open FinalCode and begin by inputting the 4 X coordinates followed by the 4 Y coordinates into the program. 
 The program will then prompt you for your maximum path length.
 
-The program then calculates the distances between all the input values. These are then turned into vectors.  And are returned to us as vector lengths for the 6 possible vectors.
+The program then calculates the distances between all the input values. These are then turned into vectors.  And are returned to us as vector lengths for the
+6 possible vectors. These vectors are printed
 
-The user must then go run the roughDraft.java file. This file will find every possible combination of vectors. It will also eliminate the options that are less than 3 vectors as they aren’t valid for our use.
+The code makes a powerset of all possible vector combinations
 
-The user can then match the vector lengths given in the Main.java file to their appropriate given in the output. If the addition of the lengths in the order of the vectors exceed the maximum length the user specified at the start of the program, they can disregard that vector combination. 
-Once the user is satisfied with their vector combinations they can run them into the Test efficieny file to find the most efficient path
+the powerset is tested for path connectivity. If the set of paths it is connective and under the max path length it is added to a 2d array and its 
+corrosponding distance set is added to another 2d array in the corrosponding position
 
+Every set in the 2d array is tested for efficiency and the most efficient is printed
+
+***note after hundreds of hours worked on this project we could not get the code to work in seperate classes. We apologize for this and we will get TA help to make 
+sure that requirement is fufilled moving forward.
 
 source for some of the code
 https://stackoverflow.com/questions/1670862/obtaining-a-powerset-of-a-set-in-java
