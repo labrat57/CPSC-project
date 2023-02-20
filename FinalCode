@@ -1,0 +1,464 @@
+package group.project;
+	
+
+import java.util.Scanner;
+import java.util.Set;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+
+class Point{
+	int x;
+	int y;
+	String name;
+}
+
+	
+public class FinalCode {
+	public static void main(String[] args) {
+//Natalies Code till line 80//////////////////////////////////////////
+//should be its own class but we dont know how
+		
+		Scanner input = new Scanner(System.in);
+        int[] Xval = new int[4];
+        int[] Yval = new int [4];
+        double maxLength = 0;
+
+
+        //getting x and y from user
+        System.out.println("Please enter 4 x values:");
+        for (int i = 0; i < 4; i++) {
+            Xval[i] = input.nextInt();
+        }
+        System.out.println("Please enter 4 Y values:");
+        for (int n = 0; n < 4; n++) {
+            Yval[n] = input.nextInt();
+        }
+		// max length 
+		System.out.print("Please enter your maximum length:");
+
+        	maxLength = input.nextInt();
+        
+
+        input.close();
+		Point[] newArr = new Point[4];
+		
+		char names = 'A';
+		//function where you are given x,y
+		for (int i = 0; i < 4; i++) {
+          newArr [i] = new Point();
+          newArr[i].x=Xval[i];
+          newArr[i].y=Yval[i];		  
+          newArr[i].name= names + "";
+          names++;
+		}
+		
+		int amountOfPoints =4;
+		double[] magnitudes = new double[amountOfPoints*(amountOfPoints-1)/2]; // create an array to store the magnitudes
+    	int index = 0;
+    	// finding all vectors and calculating magnitudes
+    	for(int i=0; i < amountOfPoints-1; i++){
+    		for(int j=i+1; j < amountOfPoints; j++){
+    			System.out.println(newArr[i].x + "," + newArr[i].y);
+    			System.out.println(newArr[j].x + "," + newArr[j].y);
+        
+    			double magnitude = Math.sqrt(Math.pow((newArr[j].x-newArr[i].x),2)+ Math.pow((newArr[j].y-newArr[i].y),2)); // calculate magnitude
+    			magnitudes[index] = magnitude; // store magnitude in the array
+    			index++;
+        
+    			System.out.println(newArr[i].name + newArr[j].name );
+    			System.out.println(magnitude);
+    		}
+    	}
+    	System.out.println("this is the array:" + Arrays.toString(magnitudes));		
+
+        String [] originalSetString = {"AB","AC","AD","BC","BD","CD"};
+        
+       ////////////////////////////////////////////////////////////////////////////////////////////////////
+      //Romeos code should be own class but we dont know how///////////////////////////////////////////////////////        
+      //CITATION: the following 11 lines of code are modified from stack overflow author: Andrew Mao
+      //LINK: https://stackoverflow.com/questions/1670862/obtaining-a-powerset-of-a-set-in-java        
+       
+        List<String> list = new ArrayList<String>();
+        for (String element : originalSetString) {
+            list.add(element);
+        }
+        
+        int n = list.size();
+        
+        Set<Set<String>> powerSetString = new HashSet<Set<String>>();
+        
+        for( long i = 0; i < (1 << n); i++) {
+            Set<String> element = new HashSet<String>();
+            for( int j = 0; j < n; j++ )
+                if( (i >> j) % 2 == 1 ) element.add(list.get(j));
+            powerSetString.add(element); 
+        }
+        
+        //created power set
+        
+        
+        String[][] powerSetArray = new String[powerSetString.size()][];
+        int i = 0;
+        for (Set<String> set : powerSetString) {
+            powerSetArray[i] = new String[set.size()];
+            int j = 0;
+            for (String str : set) {
+                powerSetArray[i][j] = str;
+                j++;
+            }
+            i++;
+        }
+        //turns power set into an array
+       
+        double [][] setOfLengths = {};
+        String [][] setOfLists = {};
+        
+        for (int t = 0; t < powerSetArray.length; t++) {
+        	
+        	String[] tempSet = powerSetArray[t];
+        	
+        	if (tempSet.length >= 3) {
+	       //if this isnt true the paths wont be path connected 
+            	double[] tempLength = new double[tempSet.length];
+        		
+        		double totalLength = 0;
+	        	
+        		for (int q = 0; q < tempSet.length; q++) {
+	        		//creates 2 arrays. one string made of the paths. on made of the distances of those paths
+
+    			    if (tempSet[q].equals("AB")) {
+    			    	tempLength[q] = magnitudes[0];
+    			    	totalLength += magnitudes[0];
+    			    }
+
+    			    if (tempSet[q].equals("AC")) {
+    			    	tempLength[q] = magnitudes[1];
+    			    	totalLength += magnitudes[1];
+    			    }
+    			    
+    			    if (tempSet[q].equals("AD")) {
+    			    	tempLength[q] = magnitudes[2];
+    			    	totalLength += magnitudes[2];
+    			    	
+    			    }
+    			    
+    			    if (tempSet[q].equals("BC")) {
+    			    	tempLength[q] = magnitudes[3];
+    			    	totalLength += magnitudes[3];
+    			    }
+    			    
+    			    if (tempSet[q].equals("BD")) {
+    			    	tempLength[q] = magnitudes[4];
+    			    	totalLength += magnitudes[4];
+    			    
+    			    }
+    			    	
+    			    if (tempSet[q].equals("CD")) {
+        			    tempLength[q] = magnitudes[5];
+        			    totalLength += magnitudes[5];
+    			    
+    			    
+    			    }        			
+	        	}
+	        		
+        		if (totalLength <= maxLength) {
+        			//if the 1d array is under max length it adds the 1d array to a 2d array which will be passed on
+        			double[][] newsetOfLengths = Arrays.copyOf(setOfLengths, setOfLengths.length + 1);
+        			String[][] newsetOfLists = Arrays.copyOf(setOfLists, setOfLists.length + 1);
+        			
+        			newsetOfLengths[newsetOfLengths.length - 1] = tempLength;
+        			newsetOfLists[newsetOfLists.length - 1] = tempSet;
+
+        			setOfLengths = newsetOfLengths;
+        			setOfLists = newsetOfLists;
+        			
+        			
+        			
+        		}
+        		
+	        }
+        	
+        }	
+        
+    	////////////////////////////////////////////////////////////////////////////////////////////////
+        //// the rest is carlos's code should be its own class///////////////////////////////////////////
+        
+        int numOfLists = setOfLists.length;
+    	
+    	String[] listOfPoints = {"A", "B", "C", "D"};
+        int numOfPoints = listOfPoints.length;
+        String[] maxPaths = {"AB","AC","AD","BC","BD","CD"};
+        
+        double bestEfficiency = Double.MAX_VALUE;
+        String[] bestPaths = {"there is no connected path that satisfies the input requirements"};
+    	
+        for (int q = 0; q < numOfLists; q++) {
+            String[] paths = setOfLists[q];
+            int numOfPaths = paths.length;
+            double[] lengths = setOfLengths[q];
+            double efficiency = Double.MAX_VALUE;
+            
+            
+            //here we test for path connectivness. if theres 4 points and three or more 
+            //paths we know they are path connected if and only if each point shows up at least once
+            boolean allPathsConnected = true;
+            for (int i1 = 0; i1 < numOfPoints; i1++) {
+                boolean pathConnected = false;
+                for (int t = 0; t < numOfPaths; t++) {
+                    if (paths[t].charAt(0) == listOfPoints[i1].charAt(0) || paths[t].charAt(1) == listOfPoints[i1].charAt(0)) {
+                        pathConnected = true;
+                        break;
+                    }
+                }
+                if (!pathConnected) {
+                    allPathsConnected = false;
+                    break;
+                }
+            }
+            if (allPathsConnected) {
+
+            	efficiency = 0;
+            	for (int i1 = 0; i1 < maxPaths.length; i1++) {
+            		
+            		String getPoints = maxPaths[i1];
+            		char startPoint = getPoints.charAt(0);
+            		char endPoint = getPoints.charAt(1);
+            		boolean done = false;
+            		
+            		if (paths.length == 3) {
+            			for (int t = 0; t < 3; t++) {
+            				efficiency += 3*lengths[t];
+            				
+            			}	
+            			break;
+            			//basically I figured out that this is always true and this saves a lot of time
+            		}
+            		
+            		for (int t = 0; t < paths.length; t++) {
+            			
+            			String direct = "" + startPoint + endPoint; 
+            			
+            			
+            			if (paths[t].equals(direct)) {
+            				//if direct path from start pt to end pt
+            				efficiency += lengths[t];
+            				done = true;
+            				break;
+            			}
+            			
+            		}
+            	//case 6 paths is accounted for
+            		
+            		int count = 0;
+            		String Astart = "" + "A" + startPoint;
+            		String startB = "" + startPoint + "B";
+            		String startC = "" + startPoint + "C";
+            		String startD = "" + startPoint + "D";
+            	//can never have A as endPoint
+            		if (!done) {
+        	    		for (int t = 0; t < paths.length; t++) {
+        	    			//how many times is the start point in paths
+        	    			if (paths[t].equals(startB)) {
+        	    				count += 1;
+        	    			}
+        	    			
+        	    			if (paths[t].equals(startC)) {
+        	    				count += 1;
+        	    			}
+        	    			
+        	    			if (paths[t].equals(startD)) {
+        	    				count += 1;
+        	    				
+        	    			}
+        	    			
+        	    			if (paths[t].equals(Astart)) {
+        	    				count += 1;
+        	    			}
+        	    		}
+        	    		
+            		}
+            		
+            		//currently testing one element in maxpaths ex. CD
+            		char currentPoint = startPoint;
+            		
+            		if (count == 1 && !done) {
+            		//if startpt in path once and no direct path to end
+            		//means we have to follow that path	
+            			
+        	    		for (int t = 0; t < paths.length; t++) {
+        	    			//only one of these should be true
+        	    			
+        	    			if (paths[t].equals(Astart)) {
+        	    				efficiency += lengths[t];
+        	    				currentPoint = 'A';
+        	    				break;
+        	    			}
+        	    			
+        	    			if (paths[t].equals(startB)) {
+        	    				efficiency += lengths[t];
+        	    				currentPoint = 'B';
+        	    				break;
+        	    			}
+        	    			
+        	    			else if (paths[t].equals(startC)) {
+        	    				efficiency += lengths[t];
+        	    				currentPoint = 'C';
+        	    				break;
+        	    			}
+        	    			
+        	    			else if (paths[t].equals(startD)) {
+        	    				efficiency += lengths[t];
+        	    				currentPoint = 'D';
+        	    				break;
+        	    			}
+        	    		}
+            		
+        	    		
+        	    		
+        	    		while(!done) {
+        		    			
+        		    		
+        		    		String midEnd = "" + currentPoint + endPoint;
+        		    		String endMid = "" + endPoint + currentPoint;
+        	    			
+        	    			for (int t = 0; t < paths.length; t++) {
+        		    			
+        		    			if ((paths[t].equals(midEnd))||(paths[t].equals(endMid))) {// why error
+        		    				//if our new point has a direct path to end
+        		    				efficiency += lengths[t];
+        		    				done = true;
+        		    				break;	
+        		    			}
+        	    			}
+        	    			
+        	    		}
+            		}
+            		
+            		if (count == 2 && !done){
+            			
+            			
+        				char tstPtOne = startPoint;
+        				char tstPtTwo = startPoint;
+        				double tstOne = Double.MAX_VALUE;
+        				double tstTwo = Double.MAX_VALUE;
+            			
+            			for (int t = 0; t < paths.length; t++) {
+        	    			//only one of these should be true
+            				
+            				if (paths[t].equals(Astart)) {
+        	    				if (tstPtOne == startPoint) {
+        	    					tstOne = lengths[t];
+        		    				tstPtOne = 'A';
+        	    				}
+        	    				
+        	    				else {
+        		    				tstTwo = lengths[t];
+        		    				tstPtTwo = 'A';
+        		    				break;
+        	    				}
+        	    				
+        	    			}
+            				
+        	    			if (paths[t].equals(startB)) {
+        	    				if (tstPtOne == startPoint) {
+        	    					tstOne = lengths[t];
+        		    				tstPtOne = 'B';
+        	    				}
+        	    				
+        	    				else {
+        		    				tstTwo = lengths[t];
+        		    				tstPtTwo = 'B';
+        		    				break;
+        	    				}
+        	    				
+        	    			}	
+        	    			if (paths[t].equals(startC)) {
+        	    				if (tstPtOne == startPoint) {
+        	    					tstOne = lengths[t];
+        		    				tstPtOne = 'C';
+        	    				}
+        	    				else {
+        		    				tstTwo = lengths[t];
+        		    				tstPtTwo = 'C';
+        		    				break;
+        	    				}
+        	    			}		    			
+        	    			if (paths[t].equals(startD)) {
+        	    				if (tstPtOne == startPoint) {
+        	    					tstOne = lengths[t];
+        		    				tstPtOne = 'D';
+        	    				}
+        		    			else {
+        			    			tstTwo = lengths[t];
+        			    			tstPtTwo = 'D';
+        			    			break;
+        		    			}
+        	    			}
+        	    		}
+            			
+            			String tstOneEnd = "" + tstPtOne + endPoint;
+            			String tstEndOne = "" + endPoint + tstPtOne;
+            			String tstTwoEnd = "" + tstPtTwo + endPoint;
+             			String tstEndTwo = "" + endPoint + tstPtTwo;
+             			boolean tstOneWork = false;
+             			boolean tstTwoWork = false;
+             			
+             			for (int t = 0; t < paths.length; t++) {
+             				
+             				if ((paths[t].equals(tstOneEnd))||(paths[t].equals(tstEndOne))){
+             					tstOne += lengths[t];
+             					tstOneWork = true;
+             				}
+             				
+             				if ((paths[t].equals(tstTwoEnd))||(paths[t].equals(tstEndTwo))){
+             					tstTwo += lengths[t];
+             					tstTwoWork = true;
+             				}    				
+             			}
+             			if (!tstOneWork) {
+             				tstOne = Double.MAX_VALUE;
+             			}
+             			
+             			if (!tstTwoWork) {
+             				tstTwo = Double.MAX_VALUE;
+             			}
+             			
+             			if (tstOne < tstTwo) {
+             				efficiency += tstOne;
+             				done = true;
+             			}
+             			else {
+             				efficiency += tstTwo;
+             			}
+            		}
+            	}
+            
+            	System.out.println(efficiency);
+            	System.out.println(Arrays.toString(paths));
+            	
+            	if (efficiency<bestEfficiency) {
+                	
+                	
+                	bestEfficiency = efficiency;
+                	bestPaths = paths;
+            	
+            	}	 
+            
+            	
+            	
+            }
+            
+            
+        }
+
+	    System.out.println("The best set of paths between the given points is:");
+	    System.out.println(Arrays.toString(bestPaths));
+
+		
+		
+	}
+}
