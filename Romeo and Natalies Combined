@@ -1,0 +1,192 @@
+package group.project;
+	
+
+import java.util.Scanner;
+import java.util.Set;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+
+class Point{
+	int x;
+	int y;
+	String name;
+}
+
+	
+public class RomeoCode {
+	public static void main(String[] args) {
+//Natalies Code till line 80//////////////////////////////////////////
+//should be its own class but we dont know how
+		
+		Scanner input = new Scanner(System.in);
+        int[] Xval = new int[4];
+        int[] Yval = new int [4];
+        double maxLength = 0;
+
+
+        //getting x and y from user
+        System.out.println("Please enter 4 x values:");
+        for (int i = 0; i < 4; i++) {
+            Xval[i] = input.nextInt();
+        }
+        System.out.println("Please enter 4 Y values:");
+        for (int n = 0; n < 4; n++) {
+            Yval[n] = input.nextInt();
+        }
+		// max length 
+		System.out.print("Please enter your maximum length:");
+
+        	maxLength = input.nextInt();
+        
+
+        input.close();
+		Point[] newArr = new Point[4];
+		
+		char names = 'A';
+		//function where you are given x,y
+		for (int i = 0; i < 4; i++) {
+          newArr [i] = new Point();
+          newArr[i].x=Xval[i];
+          newArr[i].y=Yval[i];		  
+          newArr[i].name= names + "";
+          names++;
+		}
+		
+		int amountOfPoints =4;
+		double[] magnitudes = new double[amountOfPoints*(amountOfPoints-1)/2]; // create an array to store the magnitudes
+    	int index = 0;
+    	// finding all vectors and calculating magnitudes
+    	for(int i=0; i < amountOfPoints-1; i++){
+    		for(int j=i+1; j < amountOfPoints; j++){
+    			System.out.println(newArr[i].x + "," + newArr[i].y);
+    			System.out.println(newArr[j].x + "," + newArr[j].y);
+        
+    			double magnitude = Math.sqrt(Math.pow((newArr[j].x-newArr[i].x),2)+ Math.pow((newArr[j].y-newArr[i].y),2)); // calculate magnitude
+    			magnitudes[index] = magnitude; // store magnitude in the array
+    			index++;
+        
+    			System.out.println(newArr[i].name + newArr[j].name );
+    			System.out.println(magnitude);
+    		}
+    	}
+    	System.out.println("this is the array:" + Arrays.toString(magnitudes));		
+
+        String [] originalSetString = {"AB","AC","AD","BC","BD","CD"};
+        
+       ////////////////////////////////////////////////////////////////////////////////////////////////////
+      //Romeos code should be own class but we dont know how///////////////////////////////////////////////////////        
+      //CITATION: the following 11 lines of code are modified from stack overflow author: Andrew Mao
+      //LINK: https://stackoverflow.com/questions/1670862/obtaining-a-powerset-of-a-set-in-java        
+       
+        List<String> list = new ArrayList<String>();
+        for (String element : originalSetString) {
+            list.add(element);
+        }
+        
+        int n = list.size();
+        
+        Set<Set<String>> powerSetString = new HashSet<Set<String>>();
+        
+        for( long i = 0; i < (1 << n); i++) {
+            Set<String> element = new HashSet<String>();
+            for( int j = 0; j < n; j++ )
+                if( (i >> j) % 2 == 1 ) element.add(list.get(j));
+            powerSetString.add(element); 
+        }
+        
+        //created power set
+        
+        
+        String[][] powerSetArray = new String[powerSetString.size()][];
+        int i = 0;
+        for (Set<String> set : powerSetString) {
+            powerSetArray[i] = new String[set.size()];
+            int j = 0;
+            for (String str : set) {
+                powerSetArray[i][j] = str;
+                j++;
+            }
+            i++;
+        }
+        //turns power set into an array
+       
+        double [][] setOfLengths = {};
+        String [][] setOfLists = {};
+        
+        for (int t = 0; t < powerSetArray.length; t++) {
+        	
+        	String[] tempSet = powerSetArray[t];
+        	
+        	if (tempSet.length >= 3) {
+	       //if this isnt true the paths wont be path connected 
+            	double[] tempLength = new double[tempSet.length];
+        		
+        		double totalLength = 0;
+	        	
+        		for (int q = 0; q < tempSet.length; q++) {
+	        		//creates 2 arrays. one string made of the paths. on made of the distances of those paths
+
+    			    if (tempSet[q].equals("AB")) {
+    			    	tempLength[q] = magnitudes[0];
+    			    	totalLength += magnitudes[0];
+    			    }
+
+    			    if (tempSet[q].equals("AC")) {
+    			    	tempLength[q] = magnitudes[1];
+    			    	totalLength += magnitudes[1];
+    			    }
+    			    
+    			    if (tempSet[q].equals("AD")) {
+    			    	tempLength[q] = magnitudes[2];
+    			    	totalLength += magnitudes[2];
+    			    	
+    			    }
+    			    
+    			    if (tempSet[q].equals("BC")) {
+    			    	tempLength[q] = magnitudes[3];
+    			    	totalLength += magnitudes[3];
+    			    }
+    			    
+    			    if (tempSet[q].equals("BD")) {
+    			    	tempLength[q] = magnitudes[4];
+    			    	totalLength += magnitudes[4];
+    			    
+    			    }
+    			    	
+    			    if (tempSet[q].equals("CD")) {
+        			    tempLength[q] = magnitudes[5];
+        			    totalLength += magnitudes[5];
+    			    
+    			    
+    			    }        			
+	        	}
+	        		
+        		if (totalLength <= maxLength) {
+        			//if the 1d array is under max length it adds the 1d array to a 2d array which will be passed on
+        			double[][] newsetOfLengths = Arrays.copyOf(setOfLengths, setOfLengths.length + 1);
+        			String[][] newsetOfLists = Arrays.copyOf(setOfLists, setOfLists.length + 1);
+        			
+        			newsetOfLengths[newsetOfLengths.length - 1] = tempLength;
+        			newsetOfLists[newsetOfLists.length - 1] = tempSet;
+
+        			setOfLengths = newsetOfLengths;
+        			setOfLists = newsetOfLists;
+        			
+        			
+        			
+        		}
+        		
+	        }
+        	System.out.println(Arrays.deepToString(setOfLengths));
+    		System.out.println(Arrays.deepToString(setOfLists));
+        }	         
+	////////////////////////////////////////////////////////////////////////////////////////////////
+    //// the rest is carlos code should be its own class///////////////////////////////////////////
+		
+		
+	}
+}
