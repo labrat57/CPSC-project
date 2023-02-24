@@ -221,7 +221,7 @@ public class FinalCode {
             }
             if (allPathsConnected) {
 
-//eficiency test start///////////////////////////////////////////////////
+//efficiency test start///////////////////////////////////////////////////
 
             	efficiency = 0;
             	for (int i1 = 0; i1 < maxPaths.length; i1++) {
@@ -258,6 +258,8 @@ public class FinalCode {
             		int count = 0;
             		String Astart = "" + "A" + startPoint;
             		String startB = "" + startPoint + "B";
+            		String Bstart = "" + "B" + startPoint;
+            		String Cstart = "" + "C" + startPoint;
             		String startC = "" + startPoint + "C";
             		String startD = "" + startPoint + "D";
             	//can never have A as endPoint
@@ -278,6 +280,14 @@ public class FinalCode {
         	    			}
         	    			
         	    			if (paths[t].equals(Astart)) {
+        	    				count += 1;
+        	    			}
+        	    			
+        	    			if (paths[t].equals(Bstart)) {
+        	    				count += 1;
+        	    			}
+        	    			
+        	    			if (paths[t].equals(Cstart)) {
         	    				count += 1;
         	    			}
         	    		}
@@ -317,17 +327,25 @@ public class FinalCode {
         	    				currentPoint = 'D';
         	    				break;
         	    			}
+        	    			
+        	    			else if (paths[t].equals(Bstart)) {
+        	    				efficiency += lengths[t];
+        	    				currentPoint = 'B';
+        	    				break;
+        	    			}
+        	    			
+        	    			else if (paths[t].equals(Cstart)) {
+        	    				efficiency += lengths[t];
+        	    				currentPoint = 'C';
+        	    				break;
+        	    			}
         	    		}
             		
         	    		
-        	    		int end = 0;
+        	    		
         	    		while(!done) {
-        		    		end += 1;
-        		    		if (end>100) {
-        		    			efficiency = Double.MAX_VALUE;
-        		    			done = true;
-        		    		//we were getting 1 infinite loop per set whe inputting weird coordinates
-        		    		}
+        		    		
+        		    		
 
         		    		String midEnd = "" + currentPoint + endPoint;
         		    		String endMid = "" + endPoint + currentPoint;
@@ -384,6 +402,21 @@ public class FinalCode {
         	    				}
         	    				
         	    			}	
+        	    			
+        	    			if (paths[t].equals(Bstart)) {
+        	    				if (tstPtOne == startPoint) {
+        	    					tstOne = lengths[t];
+        		    				tstPtOne = 'B';
+        	    				}
+        	    				
+        	    				else {
+        		    				tstTwo = lengths[t];
+        		    				tstPtTwo = 'B';
+        		    				break;
+        	    				}
+        	    				
+        	    			}
+        	    			
         	    			if (paths[t].equals(startC)) {
         	    				if (tstPtOne == startPoint) {
         	    					tstOne = lengths[t];
@@ -406,6 +439,21 @@ public class FinalCode {
         			    			break;
         		    			}
         	    			}
+        	    			
+        	    			if (paths[t].equals(Cstart)) {
+        	    				if (tstPtOne == startPoint) {
+        	    					tstOne = lengths[t];
+        		    				tstPtOne = 'C';
+        	    				}
+        	    				
+        	    				else {
+        		    				tstTwo = lengths[t];
+        		    				tstPtTwo = 'C';
+        		    				break;
+        	    				}
+        	    				
+        	    			}
+        	    			
         	    		}
             			
             			String tstOneEnd = "" + tstPtOne + endPoint;
