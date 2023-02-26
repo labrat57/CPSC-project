@@ -99,7 +99,8 @@ public class FinalCode {
         }
         
         //created power set
-        
+////////CITATION: 4 of the following 11 lines of code are modified from stack overflow author: Pshemo
+//Link: https://stackoverflow.com/questions/26726366/convert-nested-list-to-2d-array
         
         String[][] powerSetArray = new String[powerSetString.size()][];
         int i = 0;
