@@ -19,7 +19,7 @@ Every set in the 2d array is tested for efficiency and the most efficient is pri
 ***note after over a hundred hours worked on this project we could not get the code to work in seperate classes. We apologize for this and we will get TA help to make 
 sure that requirement is fufilled moving forward.
 
-15 of the 
+15 of the 396 lines of code are cited (3.8%)
 
 source for some of the code
 https://stackoverflow.com/questions/1670862/obtaining-a-powerset-of-a-set-in-java
