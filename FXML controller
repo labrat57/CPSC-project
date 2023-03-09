@@ -1,0 +1,43 @@
+// this is where the important things are happenign for the code to run. this is where it will have to be intgrated i think
+package application;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+
+public class RoutePlannerController {
+
+    @FXML
+    private TextField xThree;
+
+    @FXML
+    private TextField xFour;
+
+    @FXML
+    private TextField xTwo;
+
+    @FXML
+    private TextField yOne;
+
+    @FXML
+    private TextField yFour;
+
+    @FXML
+    private TextField max;
+
+    @FXML
+    private TextField xOne;
+
+    @FXML
+    private TextField yTwo;
+
+    @FXML
+    private TextField yThree;
+
+    @FXML
+    void FindRoute(ActionEvent event) {
+    	//once the user clicks the button to calculate the route this is where the code will run
+
+    }
+
+}
