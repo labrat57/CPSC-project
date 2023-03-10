@@ -10,9 +10,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
+//all the widgets are put into a v box as the base
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RoutePlannerController">
    <children>
-      <Label text="Enter your coordinates(value must be smaller than 100):" />
+      <Label text="Enter your coordinates(0-100):" /> //our code only takes input between 0 and 100
+ // we then have 4 identical hboxes containing the prompts to fill with our x and y coordinates
       <HBox prefHeight="48.0" prefWidth="3608.0" spacing="10.0">
          <children>
             <Label text="1st X coordinate" />
@@ -45,12 +47,14 @@
             <TextField fx:id="yFour" promptText="0.00" />
          </children>
       </HBox>
+      // final hbox is for the maximum length value.
       <HBox layoutX="10.0" layoutY="188.0" prefHeight="55.0" prefWidth="3612.0" spacing="10.0">
          <children>
             <Label text="Enter your maximum path length" />
             <TextField fx:id="max" prefHeight="31.0" prefWidth="61.0" promptText="0.00" />
          </children>
       </HBox>
+  // finally we have a find route button to start the program with the values that have just been input 
       <Button mnemonicParsing="false" onAction="#FindRoute" text="Find route">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
