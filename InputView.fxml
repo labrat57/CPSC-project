@@ -1,7 +1,3 @@
-//Run this as an FXML file linked to the main class of the .java file. 
-// the variales ares named : xOne, yOne, xTwo, yTwo, xThree, yThree, xFour, yFour, max
-// the names can be changed by just looking for the fx:id and changing what comes after.
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
@@ -10,11 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-//all the widgets are put into a v box as the base
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RoutePlannerController">
    <children>
-      <Label text="Enter your coordinates(0-100):" /> //our code only takes input between 0 and 100
- // we then have 4 identical hboxes containing the prompts to fill with our x and y coordinates
+      <Label text="Enter your coordinates (must be an integer between 0 and 100):" />
       <HBox prefHeight="48.0" prefWidth="3608.0" spacing="10.0">
          <children>
             <Label text="1st X coordinate" />
@@ -47,15 +41,13 @@
             <TextField fx:id="yFour" promptText="0.00" />
          </children>
       </HBox>
-      // final hbox is for the maximum length value.
       <HBox layoutX="10.0" layoutY="188.0" prefHeight="55.0" prefWidth="3612.0" spacing="10.0">
          <children>
-            <Label text="Enter your maximum path length" />
+            <Label text="Enter your maximum path length as an integer above 0" />
             <TextField fx:id="max" prefHeight="31.0" prefWidth="61.0" promptText="0.00" />
          </children>
       </HBox>
-  // finally we have a find route button to start the program with the values that have just been input 
-      <Button mnemonicParsing="false" onAction="#FindRoute" text="Find route"> // this line is what happens when you click the button. it is calling the method FindRoute from the controller class. 
+      <Button mnemonicParsing="false" onAction="#FindRoute" text="Find route">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
