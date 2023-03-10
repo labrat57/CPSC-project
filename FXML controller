@@ -1,4 +1,3 @@
-// this is where the important things are happenign for the code to run. this is where it will have to be intgrated i think
 package application;
 
 import javafx.event.ActionEvent;
@@ -6,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class RoutePlannerController {
-
+// all the variables we can pull from the first scene
     @FXML
     private TextField xThree;
 
@@ -36,6 +35,17 @@ public class RoutePlannerController {
 
     @FXML
     void FindRoute(ActionEvent event) {
+    	int[][] myArray; // converts the user inputs into integers. these are put into a 2d list we can use for the program to run
+        int x1 = Integer.parseInt(xOne.getText());
+        int x2 = Integer.parseInt(xTwo.getText());
+        int x3 = Integer.parseInt(xThree.getText());
+        int x4 = Integer.parseInt(xFour.getText());
+        int y1 = Integer.parseInt(yOne.getText());
+        int y2 = Integer.parseInt(yTwo.getText());
+        int y3 = Integer.parseInt(yThree.getText());
+        int y4 = Integer.parseInt(yFour.getText());
+        int maximum = Integer.parseInt(max.getText());
+        myArray = new int[][] {{x1, x2, x3, x4}, {y1, y2, y3, y4}, {maximum}};
     	//once the user clicks the button to calculate the route this is where the code will run
 
     }
