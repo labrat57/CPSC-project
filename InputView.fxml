@@ -12,7 +12,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RoutePlannerController">
    <children>
-      <Label text="Enter your coordinates:" />
+      <Label text="Enter your coordinates(value must be smaller than 100):" />
       <HBox prefHeight="48.0" prefWidth="3608.0" spacing="10.0">
          <children>
             <Label text="1st X coordinate" />
