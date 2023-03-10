@@ -25,4 +25,10 @@ source for some of the code
 https://stackoverflow.com/questions/1670862/obtaining-a-powerset-of-a-set-in-java
 https://stackoverflow.com/questions/26726366/convert-nested-list-to-2d-array
 
+HOW TO RUN SUBMISSION 3
+use classes GetMagnitudes.java , GetSetOfLengths.java , GetSetOfLists.java , EfficiencyTest.java , InputView.fxml , Main.java , RoutePlannerController.java 
+that were commited on march 10.
+
+
+
 
