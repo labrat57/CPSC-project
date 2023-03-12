@@ -50,10 +50,12 @@ public class RoutePlannerController {
         myArray = new int[][] {{x1, x2, x3, x4}, {y1, y2, y3, y4}, {maximum}};
     	//once the user clicks the button to calculate the route this is where the code will run
 		//define critital arrays for Main class 
+	    
 		int[] XvalMain = myArray[0]; 
 		int[] YvalMain = myArray[1];
 		double maxLengthMain = myArray[2][0];
-
+	//defines arrays well need later: note we did i like this so 
+	// so we can eventually do all these operations in a different class
 
 		GetMagnitudes go = new GetMagnitudes();
 		go.Xval = XvalMain;
