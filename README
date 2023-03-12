@@ -26,8 +26,8 @@ https://stackoverflow.com/questions/1670862/obtaining-a-powerset-of-a-set-in-jav
 https://stackoverflow.com/questions/26726366/convert-nested-list-to-2d-array
 
 HOW TO RUN SUBMISSION 3
-use classes GetMagnitudes.java , GetSetOfLengths.java , GetSetOfLists.java , EfficiencyTest.java , InputView.fxml , Main.java , RoutePlannerController.java 
-that were commited on march 10.
+use the classes in the folder part 3 >>> GetMagnitudes.java , GetSetOfLengths.java , GetSetOfLists.java , EfficiencyTest.java , 
+InputView.fxml , Main.java , RoutePlannerController.java
 
 
 
