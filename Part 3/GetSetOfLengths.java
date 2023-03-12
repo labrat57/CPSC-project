@@ -36,7 +36,6 @@ public class GetSetOfLengths {
 				if (tempSet[q].equals("AD")) {
 					tempLength[q] = magnitudes[2];
 
-
 				}
 
 				if (tempSet[q].equals("BC")) {
@@ -47,19 +46,15 @@ public class GetSetOfLengths {
 				if (tempSet[q].equals("BD")) {
 					tempLength[q] = magnitudes[4];
 
-
 				}
 
 				if (tempSet[q].equals("CD")) {
 					tempLength[q] = magnitudes[5];
 
 
-
 				}        			
-			}
+			}//matches corrosponding magniitudes to path adds to 1d array
 
-
-			//if the 1d array is under max length it adds the 1d array to a 2d array which will be passed on
 			double[][] newsetOfLengths = Arrays.copyOf(setOfLengths, setOfLengths.length + 1);
 
 			//deep copy
@@ -67,19 +62,14 @@ public class GetSetOfLengths {
 
 
 			setOfLengths = newsetOfLengths;
-
+			//adds 1 d array to 2 d array
 
 
 
 
 		}
 
-
-
-
 		return setOfLengths;
-
-
 
 
 	}
