@@ -8,11 +8,14 @@ class Point {
 
 public class GetMagnitudes {
 
+	
 	public static int[] Xval;
 	public static int[] Yval;
 
 	public static double[] pythag() {
-
+	// takes the points inputted by user and calculates how far appart they are
+	// stores and returns array magnitudes
+	//Author Natalie Thain
 
 
 		Point[] newArr = new Point[4];
