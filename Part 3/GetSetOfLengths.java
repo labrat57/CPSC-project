@@ -4,12 +4,13 @@ import java.util.Arrays;
 
 public class GetSetOfLengths {
 
-
+	
 	public static double [] magnitudes;
 	public static String [][] setOfLists;
 
 	public static double[][]  filterlengths(){
-
+	//java doc: this class/method will take the set of paths that fit previous restrictions and make
+	// a 2d array using the corrosponding magnitudes. will return the 2d array setOfLengths
 
 		double [][] setOfLengths = {};
 
