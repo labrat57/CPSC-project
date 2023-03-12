@@ -4,9 +4,14 @@ import java.util.Arrays;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class RoutePlannerController {
+	Stage testStage;
+	
 // all the variables we can pull from the first scene
     @FXML
     private TextField xThree;
@@ -50,12 +55,11 @@ public class RoutePlannerController {
         myArray = new int[][] {{x1, x2, x3, x4}, {y1, y2, y3, y4}, {maximum}};
     	//once the user clicks the button to calculate the route this is where the code will run
 		//define critital arrays for Main class 
-	    
 		int[] XvalMain = myArray[0]; 
 		int[] YvalMain = myArray[1];
 		double maxLengthMain = myArray[2][0];
-	//defines arrays well need later: note we did i like this so 
-	// so we can eventually do all these operations in a different class
+		//defines arrays well need later: note we did i like this so 
+		// so we can eventually do all these operations in a different class
 
 		GetMagnitudes go = new GetMagnitudes();
 		go.Xval = XvalMain;
@@ -82,6 +86,16 @@ public class RoutePlannerController {
 		hi.setOfLengths = finalSetOfLengthsMain;
 		String[] bestPathsMain = EfficiencyTest.best();
 		System.out.println(Arrays.toString(bestPathsMain));
+		
+		String stringBestPaths = "";
+		for (int i=0 ; i<bestPathsMain.length; i++){
+			stringBestPaths += bestPathsMain[i]+ " ";
+		}
+		
+		
+		Scene displayScene = new Scene(new Label (stringBestPaths));
+		testStage.setScene(displayScene);
+		//displays second scene the set of best paths
     }
 
 }
