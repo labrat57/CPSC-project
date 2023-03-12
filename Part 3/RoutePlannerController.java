@@ -13,6 +13,7 @@ public class RoutePlannerController {
 	Stage testStage;
 	
 // all the variables we can pull from the first scene
+//author Romeo
     @FXML
     private TextField xThree;
 
@@ -42,7 +43,10 @@ public class RoutePlannerController {
 
     @FXML
     void FindRoute(ActionEvent event) {
-    	int[][] myArray; // converts the user inputs into integers. these are put into a 2d list we can use for the program to run
+    	//will act as the main method. calls other classes and sets other scenes
+	//authors Natalie Carlos Romeo
+	    
+	 int[][] myArray; // converts the user inputs into integers. these are put into a 2d list we can use for the program to run
         int x1 = Integer.parseInt(xOne.getText());
         int x2 = Integer.parseInt(xTwo.getText());
         int x3 = Integer.parseInt(xThree.getText());
