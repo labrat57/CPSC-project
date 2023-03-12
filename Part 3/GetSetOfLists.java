@@ -13,7 +13,10 @@ public class GetSetOfLists {
 
 
 	public static String[][] filter() {
-
+	//javadoc: tests to see if the different sets of paths in a powerset follows the
+	//user input restrictions, and filters out some paths that arent connective
+	// Author RomeChampagne
+		
 		String [] originalSetString = {"AB","AC","AD","BC","BD","CD"};
 
 		//CITATION: the following 11 lines of code are modified from stack overflow author: Andrew Mao
@@ -68,34 +71,28 @@ public class GetSetOfLists {
 					//creates 2 arrays. one string made of the paths. on made of the distances of those paths
 
 					if (tempSet[q].equals("AB")) {
-
 						totalLength += magnitudes[0];
 					}
 
 					if (tempSet[q].equals("AC")) {
-
 						totalLength += magnitudes[1];
 					}
 
 					if (tempSet[q].equals("AD")) {
-
 						totalLength += magnitudes[2];
 
 					}
 
 					if (tempSet[q].equals("BC")) {
-
 						totalLength += magnitudes[3];
 					}
 
 					if (tempSet[q].equals("BD")) {
-
 						totalLength += magnitudes[4];
 
 					}
 
 					if (tempSet[q].equals("CD")) {
-
 						totalLength += magnitudes[5];
 
 
