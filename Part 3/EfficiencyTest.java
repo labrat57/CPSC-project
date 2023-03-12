@@ -15,9 +15,10 @@ public class EfficiencyTest {
 		String[] listOfPoints = {"A", "B", "C", "D"};
 		int numOfPoints = listOfPoints.length;
 		String[] maxPaths = {"AB","AC","AD","BC","BD","CD"};
-
+		//will be used to define future variables
+		
 		double bestEfficiency = Double.MAX_VALUE;
-		String[] bestPaths = {"there is no connected path that satisfies the input requirements"};
+		String[] bestPaths = {"there is no connected path that satisfies the input requirements"}; //will be displayed if no paths fit previous restricions
 		int numOfLists = setOfLists.length;
 
 
@@ -41,6 +42,7 @@ public class EfficiencyTest {
 					}	
 					break;
 					//basically I figured out that if theres n points and n-1 paths every path times n-1 is the efficiency
+					//adding the previous code means all cases where you have to travel through all 4 pts on the shortest path
 				}
 
 				for (int t = 0; t < paths.length; t++) {
@@ -265,7 +267,8 @@ public class EfficiencyTest {
 					String tstEndTwo = "" + endPoint + tstPtTwo;
 					boolean tstOneWork = false;
 					boolean tstTwoWork = false;
-
+					//creates new paths to test for
+					
 					for (int t = 0; t < paths.length; t++) {
 
 						if ((paths[t].equals(tstOneEnd))||(paths[t].equals(tstEndOne))){
@@ -285,13 +288,16 @@ public class EfficiencyTest {
 					if (!tstTwoWork) {
 						tstTwo = Double.MAX_VALUE;
 					}
-
+					//if one path leads to a dead end we know it wont be shortest path
+					
 					if (tstOne < tstTwo) {
 						efficiency += tstOne;
 						done = true;
+						//if theres two paths compare the paths
 					}
 					else {
 						efficiency += tstTwo;
+						done = true;
 					}
 				}
 			}
