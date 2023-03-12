@@ -8,7 +8,9 @@ public class EfficiencyTest {
 	public static double[][] setOfLengths;
 
 	public static String[] best() {
-
+	//Java doc this class and method will take the set of possible path combinations that follow our previos restrictions
+	//and output the most effection path as a string array called bestPaths
+	// Author: Carlos Serrouya
 
 		String[] listOfPoints = {"A", "B", "C", "D"};
 		int numOfPoints = listOfPoints.length;
