@@ -13,7 +13,6 @@ public class RoutePlannerController {
 	Stage testStage;
 	
 // all the variables we can pull from the first scene
-//author Romeo
     @FXML
     private TextField xThree;
 
@@ -43,10 +42,7 @@ public class RoutePlannerController {
 
     @FXML
     void FindRoute(ActionEvent event) {
-    	//will act as the main method. calls other classes and sets other scenes
-	//authors Natalie Carlos Romeo
-	    
-	 int[][] myArray; // converts the user inputs into integers. these are put into a 2d list we can use for the program to run
+    	int[][] myArray; // converts the user inputs into integers. these are put into a 2d list we can use for the program to run
         int x1 = Integer.parseInt(xOne.getText());
         int x2 = Integer.parseInt(xTwo.getText());
         int x3 = Integer.parseInt(xThree.getText());
@@ -65,19 +61,19 @@ public class RoutePlannerController {
 		//defines arrays well need later: note we did i like this so 
 		// so we can eventually do all these operations in a different class
 
-		GetMagnitudes go = new GetMagnitudes();
-		go.Xval = XvalMain;
-		go.Yval = YvalMain;
+		GetMagnitudes start = new GetMagnitudes();
+		start.setXval(XvalMain);//so we can use private
+		start.setYval(YvalMain);//parameters
 		double [] magnitudesMain = GetMagnitudes.pythag();
 
-		GetSetOfLists ya = new GetSetOfLists();
-		ya.magnitudes = magnitudesMain;
-		ya.maxLength = maxLengthMain;
+		GetSetOfLists sets = new GetSetOfLists();
+		sets.magnitudes = magnitudesMain;
+		sets.maxLength = maxLengthMain;
 		String [][] setOfListsMain = GetSetOfLists.filter();
 
 
-		PathConnect dope = new PathConnect();
-		dope.setOfLists = setOfListsMain;
+		PathConnect con = new PathConnect();
+		con.setOfLists = setOfListsMain;
 		String [][]finalSetOfListsMain = PathConnect.connect();
 
 		GetSetOfLengths connected = new GetSetOfLengths();
@@ -85,9 +81,9 @@ public class RoutePlannerController {
 		connected.setOfLists = finalSetOfListsMain;
 		double[][] finalSetOfLengthsMain = GetSetOfLengths.filterlengths();
 
-		EfficiencyTest hi = new EfficiencyTest();
-		hi.setOfLists = finalSetOfListsMain;
-		hi.setOfLengths = finalSetOfLengthsMain;
+		EfficiencyTest test = new EfficiencyTest();
+		test.setOfLists = finalSetOfListsMain;
+		test.setOfLengths = finalSetOfLengthsMain;
 		String[] bestPathsMain = EfficiencyTest.best();
 		System.out.println(Arrays.toString(bestPathsMain));
 		
