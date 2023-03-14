@@ -9,8 +9,8 @@ class Point {
 public class GetMagnitudes {
 
 	
-	public static int[] Xval;
-	public static int[] Yval;
+	private static int[] Xval;
+	private static int[] Yval;
 
 	public static double[] pythag() {
 	// takes the points inputted by user and calculates how far appart they are
@@ -48,5 +48,22 @@ public class GetMagnitudes {
 		return magnitudes;
 
 	}
-
+	public int[] getXval (){	//getter
+		return Xval;
+		
+	}
+	
+	public int[] getYval (){	//getter		
+			return Yval;	
+			
+		}
+	public void setXval(int[] setX) { //setter
+		Xval = setX;
+		
+	}
+	
+	public void setYval(int[] setY) { //setter
+		Yval = setY;
+		
+	}
 }
