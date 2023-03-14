@@ -23,7 +23,8 @@ source for some of the code
 https://stackoverflow.com/questions/1670862/obtaining-a-powerset-of-a-set-in-java
 https://stackoverflow.com/questions/26726366/convert-nested-list-to-2d-array
 
-SUBMISSION 3
+SUBMISSION 3 *****************************************************************************************************************
+NOTE ^^^ the video is a little out of date. we added getters and setters in class GetMagnitudes
 use the classes in the folder part 3 >>> GetMagnitudes.java , GetSetOfLengths.java , GetSetOfLists.java , EfficiencyTest.java , 
 InputView.fxml , Main.java , RoutePlannerController.java
 the image in folder part 3 is the new class diagram.
